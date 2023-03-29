@@ -1,0 +1,99 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package newpackage;
+
+import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author oscar
+ */
+public class P2extra {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        boolean seguir = true;
+        int jugador = 0;
+        
+        int ordinador = TornOrdinador();
+        System.out.println(ordinador);
+        
+        
+        System.out.println("et toca: ");
+        
+        
+        while(seguir){
+            
+            int daus = TirarDaus();
+            System.out.println("S'ha tret un " + daus);
+            jugador += daus;
+            System.out.println("Ara tens " + jugador + " punts");
+            System.out.println(" Vols tirar un altre cop? si o no?");
+            String answer = sc.nextLine();
+            
+            
+            if(answer.equals("S")){
+                System.out.println("D'acord");
+            
+                
+            }else if(jugador>14){
+                seguir = false;
+                System.out.println("T'has plantat amb " + jugador + " punts");
+                break;
+            
+            }else if(answer.equals("N")){
+                seguir = false;
+                      
+            }else{
+                System.out.println("no t'entenc, torna a repetir-ho siusplau");
+                answer = sc.nextLine();
+                
+            }
+            
+        }   
+        if (jugador > ordinador && jugador < 14){
+            System.out.println("Enhorabona, has guanyat! ggwp!");
+        }else if (ordinador > jugador ){
+            System.out.println("better luck next time!");
+        }else if(ordinador == jugador){
+            System.out.println("Empate táctico... Empate, encima táctico");
+        }
+        
+    }    
+    
+        
+    static int TirarDaus(){
+        int dau = (int) (Math.random()*6) + 1;
+        return dau;
+    }
+    
+    
+    
+    static int TornOrdinador(){
+        System.out.println("Torn de l'ordinador");
+        int adversari = 0;
+        System.out.println("l'ordinador tira el dau");
+        int dado = TirarDaus();
+        
+        
+        while(adversari < 10){
+            
+            
+            System.out.println(adversari + " + " + dado + " = " + (adversari+dado));
+            adversari += dado;
+            dado = TirarDaus();
+        }
+        System.out.println("L'ordinador es planta amb " + adversari + " punts");
+        
+        return adversari;
+    }
+}
+

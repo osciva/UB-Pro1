@@ -1,0 +1,169 @@
+import java.util.*;
+
+/*
+Feu un programa que donada una frase entrada per teclat mostra quants grups
+de vocals contentes hi ha, s'enten com a grup de vocals contentes un grup de més d'una vocal una
+al costat de l'altre. El programa també ha de mostrar els grups de vocals contentes.
+
+Per exemple: a la cadena “aejkljkdjdahhaeiourrrraeae” hi ha 3 grups de vocals contentes, a la
+cadena “aebicdeif” hi ha 2 grups de vocals contentes, i a cadena “abcdef” no hi ha cap vocal contenta.
+
+Les vocals poden ser en majúscules o en minúscules.
+
+Un exemple d'execució és:
+
+Dona'm la frase: aejkljkdjdahhaeiourrrraeae
+ae
+aeiou
+aeae
+Hi ha 3 grups de vocals contentes
+
+RECORDEU FER ELS TESTS JUNITS QUE S'INDIQUEN A FITXER ContentesProvaTest.java
+
+*/
+public class ContentesProva {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String cadena;
+
+        System.out.print("Dona'm la frase: ");
+        cadena = sc.nextLine();
+
+        int grups = quantsGrupsVocalsContentes(cadena);
+
+        mostraResultat(grups);
+
+    }
+
+    /**
+     * Mètode que a partir de la cadena rebuda per paràmetre ha de retornar el número 
+     * de grups de vocals, s'enten com a grup de vocals un grup de més d'una vocal una
+     * al costat de l'altre, per exemple "aejkljkdjdahhaeiourrrraeae" hi ha tres
+     * grups de vocals.
+     * A més a més el mètode ha de mostrar els grups de vocals, per exemple donada l'entrada
+     * Dona'm la frase: aejkljkdjdahhaeiourrrraeae
+     * ha de mostrar: 
+     * ae
+     * aeiou
+     * aeae
+     * 
+     * @param cadena
+     * @return 
+     */
+    
+    static int quantsGrupsVocalsContentes(String cadena) {
+
+        int comptador = 0;
+        String blanc = " ";
+        char lletra, lletraAbans, lletraDespres;
+        String vocals = "";
+
+        cadena = blanc.concat(cadena);
+        cadena = cadena.concat(blanc);
+
+    /* Identificacio de la seqüencia: …
+    * Primer() = i == 1
+    * Següent() = i++
+    * FiSeq(): i >= cadena.length() - 1 
+    * Identificacio de l'esquema: Recorregut
+    */
+        for(int i = 1; i < cadena.length() - 1; i++) {
+
+            lletra = cadena.charAt(i);
+            lletraAbans = cadena.charAt(i - 1);
+            lletraDespres = cadena.charAt(i + 1);
+
+            if (esVocal(lletra)) {
+
+                if (esVocal(lletra) == esVocal(lletraDespres) || esVocal(lletra) == esVocal(lletraAbans)) {
+                    vocals += lletra; 
+                }
+
+                if (esVocal(lletra) != esVocal(lletraDespres) && esVocal(lletra) == esVocal(lletraAbans)) {
+                    comptador++;
+                    System.out.println(vocals);
+                    vocals = "";
+                }
+
+            }
+
+        }
+
+        return comptador;
+
+    }
+    /**
+     * Comprova si la lletra que es rep per paràmetre és una 
+     * de les vocals a e i o u és a dir sense accents
+     * en cas que sigui vocal retorna true i en cas contrari false
+     * @param lletra
+     * @return 
+     */
+    static boolean esVocal(char lletra) {
+
+        lletra = Character.toLowerCase(lletra);
+
+        if(lletra == 'a' || lletra == 'e' || lletra == 'i' || lletra == 'o' || lletra == 'u'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * 
+     * Aquest métode muestra per pantalla el missatge "No hi ha cap vocal a contenta." si no hi ha grups de vocals contentes, i
+     * en cas contrari muestra "Hi ha x grups de vocals contentes", on x és el nombre de grups de vocals contentes.
+     * El parametre quantes indica el nombre de grups de vocals contentes
+     * @param quantes 
+     */
+    static void mostraResultat(int quantes) {
+        if (quantes == 0) {
+            System.out.println("No hi ha cap vocal contenta.");
+        }
+
+        else {
+            System.out.println("Hi han " + quantes + " grups de vocals contentes");
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import caseine.format.javajunit.Grade;
+import caseine.format.javajunit.TimeLimit;
+
+public class ContentesProvaTest {
+    
+    @Test
+    public void testEsVocal(){
+        char lletra = 'a';
+        boolean expResult = true;
+        boolean result = ContentesProva.esVocal(lletra);
+        assertTrue(result);
+        }
+      
+    } 
+    
+    @Test
+    public void testQuantsGrupsVocalsContentes(){
+       String cadena = "aaffeebbuu";
+       int result = 3;
+       int expResult = ContentesProva.esVocal(lletra);
+       if (resultat != expResult){
+           System.out.println("Han fallat els tests");
+       }
+    }
+}
