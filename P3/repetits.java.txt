@@ -1,0 +1,40 @@
+import java.util.*;
+public class p33 {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        System.out.println("Dona'm una 'n': ");
+        int n = sc.nextInt();
+        int [] numeros = new int[n];
+
+        for (int j = 0; j < n; j++) {
+            System.out.println("Dona'm "+ j+": ");
+            numeros[j] = sc.nextInt();
+        }
+        int max = trobarMaxim(numeros);
+        for (int i = 0; i < max+1; i++) {
+            if (existeEnArray(numeros, i) > 1) {
+                System.out.println("El nombre "+ i + " surt "+ existeEnArray(numeros, i)+ " vegades.");
+            }
+        }
+    }
+    public static int existeEnArray(int[] array, int busqueda) {
+        int cont = 0;
+        for (int x = 0; x < array.length; x++) {
+            if (array[x] == busqueda) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+    public static int trobarMaxim(int [] array){
+        int max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] >= max){
+                max = array[i];
+            }
+
+        }
+        return max;
+    }
+
+}

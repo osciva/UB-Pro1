@@ -1,0 +1,101 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package newpackage;
+
+import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author oscar
+ */
+public class P2extra {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        
+        System.out.println("Dona'm el tamany d'una matriu quadradada");
+        int n = sc.nextInt();
+        
+        String [][] array = new String[n][n];
+        
+        
+        
+        crearArray(array, n);
+        crearArrayBombes(array, n);
+        mostrarArray(array);
+        
+        
+        
+        
+            
+        
+        
+        
+    }
+
+        
+    static void mostrarArray(String[][] tauler){
+        for(int i = 0; i < tauler.length; i++) {
+            for (int j = 0; j < tauler.length; j++) {
+                System.out.print(tauler[i][j]);
+            }
+            System.out.println("");
+        }
+    }    
+    public static void crearArray(String [][] array, int n){
+        
+        int g = 0;
+        for (int i = 0; i < n; i++) {
+            
+            for (int j = 0; j < n; j++) {
+                array[i][j] = " - ";
+                
+                
+                
+                                
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    static void crearArrayBombes (String [][] tauler, int n){
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                tauler [i][j] = " - ";
+            }
+        }
+
+        int bombesAleatories = (int)(Math.random()* (n*n));
+        int cont = 0;
+        while (cont < bombesAleatories) {
+            int x = (int)(Math.random()* n);
+            int y = (int)(Math.random()* n);
+
+            if (tauler[x][y] == " O ") {
+                while (tauler[x][y].equals(" O ")){
+                    x = (int)(Math.random()* n);
+                    y = (int)(Math.random()* n); 
+                }
+            }
+            else{
+                tauler[x][y] = " O ";
+                cont++;
+            }
+        }
+        System.out.println("El nombre de bombes colocades és de: "+ bombesAleatories + " i percentatge de terreny ocupat és de: "
+                + ((float)(bombesAleatories / (float)(n*n))*100) +"%");
+
+        System.out.println("");
+    }
+}

@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package newpackage;
+
+import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author oscar
+ */
+public class P2extra {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        
+        String [] premios = new String[4];
+        premios[0] = "fresita";
+        premios[1] = "coin";
+        premios[2] = "siete";
+        premios[3] = "sandia";
+        
+        int comptador = 1;
+        
+        System.out.println("Comença la tirada");
+        String uno = premios[((int) (Math.random()*3) +1 )];
+        System.out.println("ha sortit un: " + uno);
+        String dos = premios[((int) (Math.random()*3) +1 )];
+        System.out.println("ha sortit un: " + dos);
+        String tres = premios[((int) (Math.random()*3) +1 )];
+        System.out.println("ha sortit un: " + tres);
+       
+        while(uno != "coin" || dos != "coin" || tres != "coin"){
+            
+            System.out.println("Comença la tirada");
+            uno = premios[((int) (Math.random()*3) +1 )];
+            System.out.println("ha sortit un: " + uno);
+            dos = premios[((int) (Math.random()*3) +1 )];
+            System.out.println("ha sortit un: " + dos);
+            tres = premios[((int) (Math.random()*3) +1 )];
+            System.out.println("ha sortit un: " + tres);
+            comptador++;
+            
+        }
+        
+        System.out.println("enhorabona, has guanyat el jackpot(100€) en " 
+                + comptador + " tirades. Com cada tirada costa 3€, has obtingut"
+                        + " un benefici total de " + (100 - (comptador*3)) + "€");
+       
+    }
+
+}

@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package newpackage;
+
+import java.util.*;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author oscar
+ */
+public class P2extra {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n, m;
+        final int MIN = 1;
+        final int MAX = 50;
+        Scanner teclat = new Scanner(System.in);
+      
+        System.out.println("Introdueix valors de n i m en el interval [" + MIN + ", " + MAX + "]: ");
+        n = teclat.nextInt();
+        m = teclat.nextInt();
+      
+        while(n < MIN || MAX < n || m < MIN || MAX < m){
+          
+           System.out.println("Introdueix valors de n i m en el interval [" + MIN + ", " + MAX + "]: ");
+           
+           n = teclat.nextInt();
+           
+           m = teclat.nextInt();
+           
+        }
+      
+      
+        dibuix(n, m);
+      
+
+      
+      
+      
+    }
+    
+    static void dibuix (int n, int m){
+        for (int i = 0; i < n; i++){
+            System.out.print("|");
+            for (int j = 0; j < m - 2; j++){
+                if( i % 2 == j % 2){
+                    System.out.print("*");
+                }else{
+                    System.out.print("-");
+                }
+            }
+            System.out.println("|");
+        }
+        
+     
+      
+        
+        
+        
+        
+        
+        
+        
+      
+    }
+}
