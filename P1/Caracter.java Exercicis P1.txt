@@ -1,0 +1,21 @@
+
+package com.mycompany.xd;
+import java.util.*;
+
+public class NewClass {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Escriu una cadena: ");
+        String cadena = entrada.nextLine();
+        System.out.println("Dona'm un número: ");
+        int num = entrada.nextInt();
+        
+        if (num < 0 || num > cadena.length()-1){
+            System.out.println("La posició està  fora dels límits");
+        }else{
+            System.out.println("A la posició " + num + " està el caràcter " + cadena.charAt(num));
+        }
+    }
+}
